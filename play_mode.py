@@ -1,6 +1,6 @@
 from pico2d import *
 import game_framework
-
+objects = [[], [], []]
 import game_world
 from grass import Grass
 from bird import Bird
@@ -15,19 +15,23 @@ def handle_events():
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
             game_framework.quit()
         else:
-            bird.handle_event(event)
+            birds.handle_event(event)
 
 def init():
     global grass
-    global bird
-
-    running = True
+    global birds  # birds 리스트를 추가
 
     grass = Grass()
     game_world.add_object(grass, 0)
 
-    bird = Bird()
-    game_world.add_object(bird, 1)
+    birds = []  # 새 객체들을 저장할 리스트
+
+    for i in range(10):  # 10마리의 새 객체 생성
+        bird = Bird()
+        birds.append(bird)  # 리스트에 추가
+
+    game_world.add_objects(birds, 1)  # bird 리스트를 game_world에 추가
+
 
 
 def finish():
