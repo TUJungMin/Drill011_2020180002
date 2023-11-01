@@ -3,7 +3,7 @@ import game_framework
 
 import game_world
 from grass import Grass
-from boy import Boy
+from bird import Boy
 
 # boy = None
 
@@ -37,7 +37,7 @@ def finish():
 
 def update():
     game_world.update()
-    # delay(0.1)
+    #delay(0.1)
 
 
 def draw():
